@@ -7,6 +7,7 @@ function AutoCompleteBox() {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     axios
@@ -25,14 +26,17 @@ function AutoCompleteBox() {
         post.title.toLowerCase().includes(userTyped.toLowerCase())
       );
       setSuggestions(filteredSuggestions);
+      setNotFound(filteredSuggestions.length === 0);
     } else {
       setSuggestions([]);
+      setNotFound(false);
     }
   };
   const onSuggestionClick = (title) => {
     setInput(title);
     setSuggestions([]);
   };
+  const showResults = input.length >0;
 
   return (
     <div className={styles.container}>
@@ -47,15 +51,22 @@ function AutoCompleteBox() {
           <img src="" alt="" />
         </label>
       </div>
-      <div className={styles.searchResult}>
-        <ul>
-          {suggestions.map((suggestion, id) => (
-            <li key={id} onClick={onSuggestionClick}>
-              {suggestion.title}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {showResults && (
+        <div className={styles.searchResult}>
+          {notFound ? (
+            <div>Not found</div>
+          ) : (
+            <ul>
+              {suggestions.map((suggestion, id) => (
+                <li key={id}
+                 onClick={() => onSuggestionClick(suggestion.title)}>
+                  {suggestion.title}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   );
 }

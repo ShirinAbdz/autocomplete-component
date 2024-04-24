@@ -54,3 +54,8 @@
     font-size: 1.2rem;
     border-bottom: 0.5px solid rgba(191, 188, 188, 0.556);
 }
+
+.searchResult li:hover {
+    background-color: #a51d1d; 
+    cursor: pointer;
+  }
