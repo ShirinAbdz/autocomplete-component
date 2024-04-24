@@ -1,10 +1,12 @@
-import { useState } from 'react'
-
-import './App.css'
+import "./App.css";
+import AutoCompleteBox from "./components/AutoCompleteBox";
 
 function App() {
-  
-  
+  return (
+    <>
+      <AutoCompleteBox />
+    </>
+  );
 }
 
-export default App
+export default App;
