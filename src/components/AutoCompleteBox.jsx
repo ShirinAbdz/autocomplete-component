@@ -73,13 +73,13 @@ function AutoCompleteBox() {
           onChange={changeHandler}
         />
 
-        <label htmlFor="">
+        <label htmlFor="inputBox">
           <FontAwesomeIcon icon={faAngleDown} />
         </label>
       </div>
       {showResults && (
         <div className={styles.searchResult}>
-          <div className="inputSection">
+          <div className={styles.inputSection}>
             {notFound ? (
               <div className={styles.bodyText}>Not found</div>
             ) : (

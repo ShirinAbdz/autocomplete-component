@@ -5,6 +5,7 @@
 }
 
 .container {
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -21,17 +22,20 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
 }
+
 
 .input input {
     width: 60%;
     height: 60px;
     border-radius: 20px;
     border: none;
-    padding-left: 40px;
-    padding-right: 10px;
+    padding: 0 40px;
     font-size: 1.2rem;
-    text-wrap: wrap;
+    transform: translate(10px);
+
+
 
 }
 
@@ -50,10 +54,10 @@
 
 
 
+
 }
 
 .searchResult li {
-    width: 100%;
     list-style: none;
     cursor: pointer;
     padding: 10px;
@@ -74,10 +78,13 @@
 
 .bodyText {
     height: 150px;
+
 }
 
 
 .input label {
+    margin: 0;
+    padding: 0;
     transform: translateX(-40px);
     font-size: 1.5rem;
     color: gray;
