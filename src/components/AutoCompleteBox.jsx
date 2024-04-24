@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import styles from "../components/AutoCompleteBox.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 function AutoCompleteBox() {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
   const [notFound, setNotFound] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [selectedTitle, setSelectedTitle] = useState("");
+  const [selectedBody, setSelectedBody] = useState("");
 
   useEffect(() => {
     axios
@@ -15,7 +19,7 @@ function AutoCompleteBox() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => console.error("Errod fetching data", error));
+      .catch((error) => console.error("Error fetching data", error));
   }, []);
 
   const changeHandler = (e) => {
@@ -27,44 +31,83 @@ function AutoCompleteBox() {
       );
       setSuggestions(filteredSuggestions);
       setNotFound(filteredSuggestions.length === 0);
+      setActiveIndex(-1);
     } else {
       setSuggestions([]);
       setNotFound(false);
     }
   };
-  const onSuggestionClick = (title) => {
+
+  const onSuggestionClick = (title, body) => {
     setInput(title);
+    setSelectedTitle(title);
+    setSelectedBody(body);
     setSuggestions([]);
+    setActiveIndex(-1);
   };
-  const showResults = input.length >0;
+
+  // useEffect(() => {
+  //   const eventHandler = (event) => {
+  //     if (!inputBox.contains(event.target)) {
+  //       setInput("");
+  //     }
+  //   };
+  //   const inputBox = document.getElementById("inputBox");
+  //   document.addEventListener("click", eventHandler);
+  //   return () => {
+  //     document.removeEventListener("click", eventHandler);
+  //   };
+  // }, []);
+
+  const showResults = input.length > 0;
 
   return (
     <div className={styles.container}>
       <div className={styles.input}>
         <input
+          id="inputBox"
+          className={styles.inputBox}
           type="text"
           value={input}
           placeholder="Search..."
           onChange={changeHandler}
         />
+
         <label htmlFor="">
-          <img src="" alt="" />
+          <FontAwesomeIcon icon={faAngleDown} />
         </label>
       </div>
       {showResults && (
         <div className={styles.searchResult}>
-          {notFound ? (
-            <div>Not found</div>
-          ) : (
-            <ul>
-              {suggestions.map((suggestion, id) => (
-                <li key={id}
-                 onClick={() => onSuggestionClick(suggestion.title)}>
-                  {suggestion.title}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="inputSection">
+            {notFound ? (
+              <div className={styles.bodyText}>Not found</div>
+            ) : (
+              <div>
+                <ul>
+                  {suggestions.map((suggestion, id) => (
+                    <li
+                      key={id}
+                      className={id === activeIndex ? styles.active : ""}
+                      onClick={() =>
+                        onSuggestionClick(suggestion.title, suggestion.body)
+                      }
+                    >
+                      {suggestion.title}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className={styles.bodyText}>
+            {selectedBody && (
+              <div>
+                <h3>{selectedTitle}</h3>
+                <p>{selectedBody}</p>
+              </div>
+            )}{" "}
+          </div>
         </div>
       )}
     </div>
