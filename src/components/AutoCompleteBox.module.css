@@ -141,13 +141,12 @@
     min-height: 100px;
     max-height: 100px;
     font-weight:700;
+    padding-top: 38px;
 
 
 }
 
-textarea::placeholder {
-    transform: translateY(18px);
-}
+
 ::-webkit-resizer {
     display: none;
 }
