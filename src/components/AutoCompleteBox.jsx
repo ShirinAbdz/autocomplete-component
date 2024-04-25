@@ -6,7 +6,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 function AutoCompleteBox() {
   const [input, setInput] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState([]); 
   const [data, setData] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -46,31 +46,23 @@ function AutoCompleteBox() {
     setActiveIndex(-1);
   };
 
-  // useEffect(() => {
-  //   const eventHandler = (event) => {
-  //     if (!inputBox.contains(event.target)) {
-  //       setInput("");
-  //     }
-  //   };
-  //   const inputBox = document.getElementById("inputBox");
-  //   document.addEventListener("click", eventHandler);
-  //   return () => {
-  //     document.removeEventListener("click", eventHandler);
-  //   };
-  // }, []);
-
   const showResults = input.length > 0;
 
   return (
     <div className={styles.container}>
+
+      <div className={styles.githubButton}>
+        <a target="_blank" href="https://github.com/ShirinAbdz/autocomplete-component" >Github Repo</a>
+      </div>
       <div className={styles.input}>
-        <input
+        <textarea
           id="inputBox"
           className={styles.inputBox}
-          type="text"
           value={input}
           placeholder="Search..."
           onChange={changeHandler}
+          rows={3}
+          
         />
 
         <label htmlFor="inputBox">
@@ -83,21 +75,19 @@ function AutoCompleteBox() {
             {notFound ? (
               <div className={styles.bodyText}>Not found</div>
             ) : (
-              <div>
-                <ul>
-                  {suggestions.map((suggestion, id) => (
-                    <li
-                      key={id}
-                      className={id === activeIndex ? styles.active : ""}
-                      onClick={() =>
-                        onSuggestionClick(suggestion.title, suggestion.body)
-                      }
-                    >
-                      {suggestion.title}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul>
+                {suggestions.map((suggestion, id) => (
+                  <li
+                    key={id}
+                    className={id === activeIndex ? styles.active : ""}
+                    onClick={() =>
+                      onSuggestionClick(suggestion.title, suggestion.body)
+                    }
+                  >
+                    {suggestion.title}
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
           <div className={styles.bodyText}>
@@ -106,7 +96,7 @@ function AutoCompleteBox() {
                 <h3>{selectedTitle}</h3>
                 <p>{selectedBody}</p>
               </div>
-            )}{" "}
+            )}
           </div>
         </div>
       )}
