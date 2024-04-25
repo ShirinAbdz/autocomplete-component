@@ -65,7 +65,7 @@ function AutoCompleteBox() {
           value={input}
           placeholder="Search..."
           onChange={changeHandler}
-          rows={3}
+          // rows={3}
           
         />
 
@@ -94,10 +94,9 @@ function AutoCompleteBox() {
               </ul>
             )}
           </div>
-          <div className={styles.bodyText}>
+          <div >
             {selectedBody && (
               <div>
-                <h3>{selectedTitle}</h3>
                 <p>{selectedBody}</p>
               </div>
             )}
