@@ -13,6 +13,7 @@ function AutoCompleteBox() {
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedBody, setSelectedBody] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     axios
@@ -59,6 +60,7 @@ function AutoCompleteBox() {
       setSuggestions(data); // Show all titles when toggling the dropdown
     }
     setShowDropdown(!showDropdown);
+    setAnimate(!animate);
   };
 
 
@@ -135,6 +137,7 @@ function AutoCompleteBox() {
           <div>
             {selectedBody && (
               <div>
+                <h2 className={styles.bodySectionTitle}>Body</h2>
                 <p className={styles.selectedBody}>{selectedBody}</p>
               </div>
             )}
