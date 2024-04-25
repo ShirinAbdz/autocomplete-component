@@ -2,8 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-        transition: 0.3s all ease-in-out;
-    
+    transition: 0.3s all ease-in-out;
+
 
 
 
@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    background-color: #32533D;
+    background-color: #353131;
     overflow: auto;
     /* background-image: url(../../public/1.jpg);
     background-size: cover;
@@ -39,6 +39,7 @@
     align-items: center;
     text-align: center;
     white-space: normal;
+        
 
 
 }
@@ -53,6 +54,8 @@
     padding: 0 40px;
     font-size: 1.1rem;
     overflow: scroll;
+    box-shadow: 10px 10px 17px #282525,
+        -10px -10px 17px #423d3d;
 
 
 }
@@ -69,6 +72,8 @@
     overflow-y: scroll;
     transition: opacity 2s ease-in-out;
     animation: transitionIn 0.5s;
+    box-shadow: 10px 10px 17px #282525,
+        -10px -10px 17px #423d3d;
 }
 
 @keyframes transitionIn {
@@ -140,7 +145,7 @@
     scrollbar-width: none;
     min-height: 100px;
     max-height: 100px;
-    font-weight:700;
+    font-weight: 700;
     padding-top: 38px;
 
 
@@ -175,10 +180,10 @@
 
 
 .githubButton {
-    background-color: #c2fbd7;
+    background-color: rgb(162, 211, 220);
     border-radius: 100px;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-    color: green;
+    box-shadow: rgba(44, 163, 187, 0.35) 0 -25px 18px -14px inset, rgba(44, 163, 187, 0.35) 0 1px 2px, rgba(44, 163, 187, 0.35) 0 2px 4px, rgba(44, 163, 187, 0.35) 0 4px 8px, rgba(44, 163, 187, 0.35) 0 8px 16px, rgba(44, 163, 187, 0.35) 0 16px 32px;
+    color: rgba(44, 163, 187, 0.35);
     cursor: pointer;
     display: inline-block;
     font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
@@ -197,16 +202,17 @@
 }
 
 .githubButton:hover {
-    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    box-shadow: rgba(44, 163, 187, 0.35) 0 -25px 18px -14px inset, rgba(44, 163, 187, 0.35) 0 1px 2px, rgba(44, 163, 187, 0.35) 0 2px 4px, rgba(44, 163, 187, 0.35) 0 4px 8px, rgba(44, 163, 187, 0.35) 0 8px 16px, rgba(44, 163, 187, 0.35) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
 }
 
 @media (min-width:250px) and (max-width:400px) {
 
-*{
-    transition: 0.3s all ease-in-out;
+    * {
+        transition: 0.3s all ease-in-out;
 
-}
+    }
+
     .githubButton {
         padding: 10px 25px;
 
@@ -241,6 +247,7 @@
 
 
     }
+
     .input input {
         width: 100%;
     }
