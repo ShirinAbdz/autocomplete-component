@@ -106,7 +106,8 @@ function AutoCompleteBox() {
           id="inputBox"
           className={styles.inputBox}
           value={input}
-          placeholder="Search..."
+
+          placeholder="Search title..."
           onChange={changeHandler}
         />
         <label htmlFor="inputBox" onClick={toggleDropdown}>

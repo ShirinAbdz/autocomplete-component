@@ -2,6 +2,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+        transition: 0.3s all ease-in-out;
+    
+
+
+
 }
 
 .container {
@@ -13,6 +18,9 @@
     align-items: center;
     background-color: #32533D;
     overflow: auto;
+    /* background-image: url(../../public/1.jpg);
+    background-size: cover;
+    backdrop-filter:blur(10px); */
 
 
 }
@@ -20,7 +28,9 @@
 
 
 
+
 .input {
+
     margin-top: 150px;
     width: 100%;
     display: flex;
@@ -118,7 +128,7 @@
 
 .input textarea {
     font-family: "Montserrat", sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     background-color: white;
     transform: translate(10px);
     border-radius: 20px;
@@ -135,6 +145,9 @@
 
 }
 
+textarea::placeholder {
+    transform: translateY(18px);
+}
 ::-webkit-resizer {
     display: none;
 }
@@ -207,6 +220,7 @@
     }
 
     .input textarea {
+        max-width: 80%;
         font-size: 1rem;
         font-weight: 600;
     }
@@ -227,6 +241,9 @@
         font-weight: 300;
 
 
+    }
+    .input input {
+        width: 100%;
     }
 
 }
