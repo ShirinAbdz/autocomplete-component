@@ -61,10 +61,43 @@ function AutoCompleteBox() {
     setShowDropdown(!showDropdown);
   };
 
+
+  // --- Typing effect to body 
+
+//   const typeEffect = document.querySelector(".selectedBody");
+//   const text = { selectedBody };
+//   function typingEffect(text, elementClass) {
+//   const script = `
+//     const text = "${text}";
+//     const element = document.querySelector(".${elementClass}");
+//     let i = 0;
+//     function typeWriter() {
+//         if (i < text.length) {
+//             element.textContent += text.charAt(i);
+//             i++;
+//             setTimeout(typeWriter, 50);
+//         }
+//     }
+//     typeWriter();
+//   `;
+//   return script;
+// }
+
+// // Call the function with the selectedBody text and the class name
+// const typingEffectCode = typingEffect("Your selected body text here", "selectedBody");
+
+// // Since we cannot execute JavaScript code here, the generated script should be used within the React component's useEffect hook.
+// console.log(typingEffectCode);
+  
   return (
     <div className={styles.container}>
       <div className={styles.githubButton}>
-        <a target="_blank" href="https://github.com/ShirinAbdz/autocomplete-component">Github Repo</a>
+        <a
+          target="_blank"
+          href="https://github.com/ShirinAbdz/autocomplete-component"
+        >
+          Github Repo
+        </a>
       </div>
       <div className={styles.input}>
         <textarea

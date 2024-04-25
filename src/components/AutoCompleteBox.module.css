@@ -17,30 +17,7 @@
 
 }
 
-.githubButton {
-    color: snow;
-    list-style: none;
-    margin-top: 50px;
 
-
-}
-
-.githubButton a {
-    color: rgb(253, 253, 253);
-    text-decoration: none;
-    font-size: 1.2rem;
-    background-color: #E3B505;
-    padding: 15px 30px;
-    border-radius: 25px;
-}
-
-.githubButton a:hover {
-    transition: 0.3s ease-in-out;
-    color: #fff;
-
-    background-color: #f49e0a5f;
-    transition: 0.3s ease-in-out;
-}
 
 
 .input {
@@ -80,8 +57,20 @@
     max-height: 250px;
     overflow-y: scroll;
     transition: opacity 2s ease-in-out;
+    animation: transitionIn 0.5s;
 }
 
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
 .searchResult li {
@@ -127,17 +116,19 @@
 }
 
 .input textarea {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 1.3rem;
     background-color: white;
     transform: translate(10px);
     border-radius: 20px;
     padding: 20px;
     padding-right: 50px;
-
+    line-height: 1;
     min-width: 60%;
     max-width: 60%;
     scrollbar-width: none;
+    min-height: 100px;
+    max-height: 100px;
 
 
 }
@@ -147,5 +138,45 @@
 }
 
 .selectedBody {
-    font-size: 1.3rem;
+  display: inline-block;
+
+}
+
+
+
+
+
+.githubButton a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 25px;
+}
+
+
+.githubButton {
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 10px 40px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 50px;
+
+}
+
+.githubButton:hover {
+    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
 }
