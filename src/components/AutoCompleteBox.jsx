@@ -6,12 +6,13 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 function AutoCompleteBox() {
   const [input, setInput] = useState("");
-  const [suggestions, setSuggestions] = useState([]); 
+  const [suggestions, setSuggestions] = useState([]);
   const [data, setData] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedBody, setSelectedBody] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     axios
@@ -34,11 +35,13 @@ function AutoCompleteBox() {
       setActiveIndex(-1);
       setSelectedTitle("");
       setSelectedBody("");
+      setShowDropdown(filteredSuggestions.length > 0);
     } else {
-      setSuggestions([]);
+      setSuggestions(data); // Show all titles when input is empty
       setNotFound(false);
       setSelectedTitle("");
       setSelectedBody("");
+      setShowDropdown(true); // Keep the dropdown open
     }
   };
 
@@ -48,15 +51,20 @@ function AutoCompleteBox() {
     setSelectedBody(body);
     setSuggestions([]);
     setActiveIndex(-1);
+    setShowDropdown(false);
   };
 
-  const showResults = input.length > 0;
+  const toggleDropdown = () => {
+    if (!showDropdown) {
+      setSuggestions(data); // Show all titles when toggling the dropdown
+    }
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <div className={styles.container}>
-
       <div className={styles.githubButton}>
-        <a target="_blank" href="https://github.com/ShirinAbdz/autocomplete-component" >Github Repo</a>
+        <a target="_blank" href="https://github.com/ShirinAbdz/autocomplete-component">Github Repo</a>
       </div>
       <div className={styles.input}>
         <textarea
@@ -65,15 +73,12 @@ function AutoCompleteBox() {
           value={input}
           placeholder="Search..."
           onChange={changeHandler}
-          // rows={3}
-          
         />
-
-        <label htmlFor="inputBox">
+        <label htmlFor="inputBox" onClick={toggleDropdown}>
           <FontAwesomeIcon icon={faAngleDown} />
         </label>
       </div>
-      {showResults && (
+      {(input.length > 0 || showDropdown) && (
         <div className={styles.searchResult}>
           <div className={styles.inputSection}>
             {notFound ? (
@@ -94,10 +99,10 @@ function AutoCompleteBox() {
               </ul>
             )}
           </div>
-          <div >
+          <div>
             {selectedBody && (
               <div>
-                <p>{selectedBody}</p>
+                <p className={styles.selectedBody}>{selectedBody}</p>
               </div>
             )}
           </div>

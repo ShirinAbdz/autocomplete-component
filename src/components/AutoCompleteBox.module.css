@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    background-color: #564D80;
+    background-color: #32533D;
     overflow: auto;
 
 
@@ -29,7 +29,7 @@
     color: rgb(253, 253, 253);
     text-decoration: none;
     font-size: 1.2rem;
-    background-color: #F49F0A;
+    background-color: #E3B505;
     padding: 15px 30px;
     border-radius: 25px;
 }
@@ -71,7 +71,7 @@
 
 .searchResult {
     margin-top: 10px;
-    background-color: white;
+    background-color: #E4D9FF;
     width: 60%;
     scrollbar-width: none;
     border-radius: 20px;
@@ -79,7 +79,7 @@
     list-style: none;
     max-height: 250px;
     overflow-y: scroll;
-
+    transition: opacity 2s ease-in-out;
 }
 
 
@@ -144,4 +144,8 @@
 
 ::-webkit-resizer {
     display: none;
+}
+
+.selectedBody {
+    font-size: 1.3rem;
 }
