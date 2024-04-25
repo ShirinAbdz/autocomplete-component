@@ -32,9 +32,13 @@ function AutoCompleteBox() {
       setSuggestions(filteredSuggestions);
       setNotFound(filteredSuggestions.length === 0);
       setActiveIndex(-1);
+      setSelectedTitle("");
+      setSelectedBody("");
     } else {
       setSuggestions([]);
       setNotFound(false);
+      setSelectedTitle("");
+      setSelectedBody("");
     }
   };
 
